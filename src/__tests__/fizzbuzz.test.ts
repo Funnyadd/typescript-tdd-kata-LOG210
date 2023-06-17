@@ -1,33 +1,47 @@
-// import hello from "../hello";
+// fizzBuzz.test.ts
+const FizzBuzz = require('../FizzBuzz')
 
 describe('FizzBuzz tdd test', () => {
 
-    beforeEach( () => {
-	})
+    it('When number is equal to 3 it should return ["1","2","Fizz"]', () => {
+        const fizzBuzz = FizzBuzz.fizzBuzz(3)
+        checkFizz(fizzBuzz)
+    })
 
-    it('write my first test', () => {
-        expect(1).toEqual(1)
-    });
-});
+    it('When number is equal to 5 it should return ["1","2","Fizz","4","Buzz"]', () => {
+        const fizzBuzz = FizzBuzz.fizzBuzz(5)
+        checkBuzz(fizzBuzz)
+    })
 
+    it('When number is equal to 15 it should return ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]', () => {
+        const fizzBuzz = FizzBuzz.fizzBuzz(15)
+        checkFizzBuzz(fizzBuzz)
+    })
+})
 
-// Given an integer n, return a string array answer (1-indexed) where:
+const checkFizz = (fizzBuzz: Array<number>) => {
+    expect(fizzBuzz[0]).toEqual("1")
+    expect(fizzBuzz[1]).toEqual("2")
+    expect(fizzBuzz[2]).toEqual("Fizz")
+}
 
-// answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
-// answer[i] == "Fizz" if i is divisible by 3.
-// answer[i] == "Buzz" if i is divisible by 5.
-// answer[i] == i if non of the above conditions are true.
- 
+const checkBuzz = (fizzBuzz: Array<number>) => {
+    checkFizz(fizzBuzz)
+    expect(fizzBuzz[3]).toEqual("4")
+    expect(fizzBuzz[4]).toEqual("Buzz")
+}
 
-// Example 1:
-
-// Input: n = 3
-// Output: ["1","2","Fizz"]
-// Example 2:
-
-// Input: n = 5
-// Output: ["1","2","Fizz","4","Buzz"]
-// Example 3:
-
-// Input: n = 15
-// Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+const checkFizzBuzz = (fizzBuzz: Array<number>) => {
+    checkFizz(fizzBuzz)
+    checkBuzz(fizzBuzz)
+    expect(fizzBuzz[5]).toEqual("Fizz")
+    expect(fizzBuzz[6]).toEqual("7")
+    expect(fizzBuzz[7]).toEqual("8")
+    expect(fizzBuzz[8]).toEqual("Fizz")
+    expect(fizzBuzz[9]).toEqual("Buzz")
+    expect(fizzBuzz[10]).toEqual("11")
+    expect(fizzBuzz[11]).toEqual("Fizz")
+    expect(fizzBuzz[12]).toEqual("13")
+    expect(fizzBuzz[13]).toEqual("14")
+    expect(fizzBuzz[14]).toEqual("FizzBuzz")
+}
